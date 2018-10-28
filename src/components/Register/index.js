@@ -21,8 +21,12 @@ class Register extends React.Component {
   handleSubmit = async e => {
     this.setState({ isLoading: true });
     e.preventDefault();
-    await APIService.registerPurchase(this.form.values);
-    this.setState({ isLoading: false });
+    APIService.registerPurchase(this.form.values)
+      .then(data => {
+        this.setState({ isLoading: false });
+        this.props.history.push(`/order/${data.id}`);
+      })
+      .catch(() => this.setState({ isLoading: false }));
   };
 
   componentDidMount() {
