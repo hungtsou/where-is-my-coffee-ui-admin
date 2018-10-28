@@ -1,34 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 
-const ordersData = [
-  {
-    id: "123",
-    name: "Perro Loko"
-  },
-  {
-    id: "12ds4433d3",
-    name: "Fulanito Nano"
-  },
-  {
-    id: "a12ds4sa433d3",
-    name: "Mengano Sutanito"
+class Orders extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ordersData: null
+    };
   }
-];
+  componentDidMount() {
+    fetch("http://localhost:10100/cafe/", {
+      method: "GET"
+    })
+      .then(response => response.json())
+      .then(data => this.setState({ ordersData: data }));
+  }
 
-const ordersList = ordersData.map(order => (
-  <ListGroupItem key={order.id}>
-    <Link to={`order/${order.id}`}>{order.name}</Link>
-  </ListGroupItem>
-));
+  render() {
+    const { ordersData } = this.state;
+    const ordersList =
+      ordersData &&
+      ordersData.map(order => (
+        <ListGroupItem key={order.id}>
+          <Link to={`order/${order.id}`}>{order.id}</Link>
+        </ListGroupItem>
+      ));
 
-const Orders = () => {
-  return (
-    <div>
-      <ListGroup>{ordersList}</ListGroup>
-    </div>
-  );
-};
+    return <div>{<ListGroup>{ordersList}</ListGroup>}</div>;
+  }
+}
 
 export default Orders;

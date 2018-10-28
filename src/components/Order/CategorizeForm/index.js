@@ -8,12 +8,11 @@ class CategorizeForm extends Component {
   }
 
   onSetCategory(e) {
-    console.log("[onPickColor]", this.inputEl);
     this.setState({ category: this.inputEl.value });
   }
 
-  onSubmit(category) {
-    fetch("https://jsonplaceholder.typicode.com/posts", {
+  onSubmit(category, id) {
+    fetch(`http://localhost:10100/cafe/${id}/upgrade`, {
       method: "POST",
       body: JSON.stringify({
         category
@@ -46,7 +45,7 @@ class CategorizeForm extends Component {
         <Button
           disabled={!this.state.category}
           bsStyle="primary"
-          onClick={() => this.onSubmit(this.state.category)}
+          onClick={() => this.onSubmit(this.state.category, this.props.orderId)}
         >
           Agregar
         </Button>
