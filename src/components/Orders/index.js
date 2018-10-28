@@ -28,7 +28,7 @@ class Orders extends Component {
       ordersData.map(order => (
         <ListGroupItem key={order.id}>
           <Link to={`order/${order.id}`}>{order.id}</Link>
-          <span style={categoryStyle}>{order.category || 'Sin Categoría'}</span>
+          <em style={categoryStyle}>{order.category || 'Sin Categoría'}</em>
         </ListGroupItem>
       ));
 
