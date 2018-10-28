@@ -75,10 +75,10 @@ class Register extends React.Component {
                 <label htmlFor="fanegas">Cantidad de Fanegas</label>
                 <Field id="fanegas" name="fanegas" placeholder="" />
                 <Button onClick={handleReset} disabled={!dirty || isSubmitting}>
-                  Reset
+                  Cancelar
                 </Button>
                 <Button bsStyle="primary" type="submit" disabled={isSubmitting}>
-                  Submit
+                  Registrar
                 </Button>
               </form>
             );

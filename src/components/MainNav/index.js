@@ -16,10 +16,10 @@ const MainNav = () => {
       </Navbar.Header>
       <Nav style={{ display: "flex" }}>
         <LinkContainer exact eventKey={1} to="/">
-          <NavItem eventKey={1}>Register</NavItem>
+          <NavItem eventKey={1}>Registrar</NavItem>
         </LinkContainer>
         <LinkContainer eventKey={2} to="/orders">
-          <NavItem eventKey={2}>Orders</NavItem>
+          <NavItem eventKey={2}>Compras</NavItem>
         </LinkContainer>
       </Nav>
     </Navbar>
