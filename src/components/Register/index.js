@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Button } from "react-bootstrap";
 import APIService from "../../APIService";
 
-import "./Register.css";
+import "./styles.css";
 
 class Register extends React.Component {
   constructor(props) {
@@ -29,7 +29,8 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
+        <h1>Registrar Compra</h1>
         <Formik
           enableReinitialize
           initialValues={{
@@ -78,7 +79,7 @@ class Register extends React.Component {
             );
           }}
         </Formik>
-      </div>
+      </React.Fragment>
     );
   }
 }
