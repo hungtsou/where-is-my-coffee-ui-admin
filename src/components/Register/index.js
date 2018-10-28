@@ -4,6 +4,7 @@ import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { Button } from "react-bootstrap";
 import APIService from "../../APIService";
+import AppLoader from "../Loader";
 
 import "./Register.css";
 
@@ -12,13 +13,16 @@ class Register extends React.Component {
     super(props);
     this.form = {};
     this.state = {
-      users: []
+      users: [],
+      isLoading: false
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
+    this.setState({ isLoading: true });
     e.preventDefault();
-    APIService.registerPurchase(this.form.values);
+    await APIService.registerPurchase(this.form.values);
+    this.setState({ isLoading: false });
   };
 
   componentDidMount() {
@@ -30,6 +34,7 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <AppLoader isActive={this.state.isLoading} />
         <Formik
           enableReinitialize
           initialValues={{
