@@ -15,14 +15,14 @@ const APIService = {
       fanegas
     };
 
-    await fetch(`${API}/cafe`, {
+    return fetch(`${API}/cafe`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
-    });
+    }).then(response => response.json());
   }
 };
 
