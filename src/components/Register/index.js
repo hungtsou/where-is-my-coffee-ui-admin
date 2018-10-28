@@ -3,36 +3,46 @@ import React from "react";
 import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { Button } from "react-bootstrap";
+import APIService from "../../APIService";
 
 import "./Register.css";
 
 class Register extends React.Component {
-  form = {};
+  constructor(props) {
+    super(props);
+    this.form = {};
+    this.state = {
+      users: []
+    };
+  }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.registerPurchase();
+    console.log(this.form.values);
+    APIService.registerPurchase(this.form.values);
   };
 
-  async registerPurchase() {
-    await fetch("https://httpbin.org/post", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.form.values)
+  componentDidMount() {
+    APIService.getUsers().then(users => {
+      this.setState({ users });
     });
   }
 
   render() {
+    console.log(this.state.users);
     return (
       <div>
         <Formik
-          initialValues={{ producerID: "", fanegas: "" }}
+          enableReinitialize
+          initialValues={{
+            productorId: this.state.users[0] ? this.state.users[0].id : "",
+            fanegas: "",
+            id: ""
+          }}
           validationSchema={Yup.object().shape({
-            producerID: Yup.number().required("Required"),
-            fanegas: Yup.number().required("Required")
+            productorId: Yup.string().required("Required"),
+            fanegas: Yup.number().required("Required"),
+            id: Yup.number().required("Required")
           })}
         >
           {form => {
@@ -40,8 +50,21 @@ class Register extends React.Component {
             this.form = form;
             return (
               <form onSubmit={this.handleSubmit}>
-                <label htmlFor="producerID">Identificacion del Productor</label>
-                <Field id="producerID" name="producerID" placeholder="" />
+                <label htmlFor="productorId">Usuario</label>
+                <Field
+                  className="form-control"
+                  component="select"
+                  name="productorId"
+                  id="productorId"
+                >
+                  {this.state.users.map(item => (
+                    <option key={item.id} value={item.id}>
+                      {item.user}
+                    </option>
+                  ))}
+                </Field>
+                <label htmlFor="id">Identificacion del Productor</label>
+                <Field id="id" name="id" placeholder="" />
                 <label htmlFor="fanegas">Cantidad de Fanegas</label>
                 <Field id="fanegas" name="fanegas" placeholder="" />
                 <Button onClick={handleReset} disabled={!dirty || isSubmitting}>
