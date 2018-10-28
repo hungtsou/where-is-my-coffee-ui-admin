@@ -2,15 +2,6 @@ import React, { Component } from "react";
 import CategorizeForm from "./CategorizeForm";
 import { Button } from "react-bootstrap";
 
-// const Order = ({ match, history }) => {
-//   return (
-//     <div>
-//       <h2>Order: {match.params.id}</h2>
-//       <CategorizeForm history={history} />
-//     </div>
-//   );
-// };
-
 class Order extends Component {
   constructor(props) {
     super(props);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "react-overlay-loader/styles.css";
 import "./App.css";
 import { Grid } from "react-bootstrap";
 import Register from "./components/Register";
