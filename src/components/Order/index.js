@@ -16,6 +16,10 @@ const stylesOrderDetail = {
   fontSize: "3rem"
 }
 
+const stylesWrapper = {
+  textAlign: "center"
+}
+
 class Order extends Component {
   constructor(props) {
     super(props);
@@ -39,13 +43,13 @@ class Order extends Component {
       ordersData && ordersData.filter(order => order.id === match.params.id)[0];
 
     return (
-      <div>
+      <div style={stylesWrapper}>
         {order &&
           !displayForm && (
-            <div>
+            <div style={stylesWrapper}>
               <QRCode value="{order.id}" style={stylesQR} />
               <ul style={stylesOrderDetail}>
-                <li>Número de Recibo: {order.id}</li>
+                <li>Número de Recibo: #{order.id}</li>
                 <li>Silo: {order.category || 'Sin Asignar'}</li>
               </ul>
               <Button

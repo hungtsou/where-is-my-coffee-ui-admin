@@ -27,6 +27,7 @@ class CategorizeForm extends Component {
   render() {
     return (
       <div>
+        <p>Seleccione una categoría para el Recibo #{this.props.orderId}</p>
         <FormGroup controlId="formControlsSelect">
           <ControlLabel>{this.state.category}</ControlLabel>
           <FormControl
@@ -47,7 +48,7 @@ class CategorizeForm extends Component {
           bsStyle="primary"
           onClick={() => this.onSubmit(this.state.category, this.props.orderId)}
         >
-          Agregar
+          Guardar
         </Button>
       </div>
     );
