@@ -18,7 +18,6 @@ class Register extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.form.values);
     APIService.registerPurchase(this.form.values);
   };
 
@@ -29,7 +28,6 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log(this.state.users);
     return (
       <div>
         <Formik
