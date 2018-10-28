@@ -8,7 +8,7 @@ const MainNav = () => {
       <Navbar.Header>
         <Navbar.Brand>Where is my Coffee?</Navbar.Brand>
       </Navbar.Header>
-      <Nav>
+      <Nav style={{ display: "flex" }}>
         <LinkContainer exact eventKey={1} to="/">
           <NavItem eventKey={1}>Register</NavItem>
         </LinkContainer>
