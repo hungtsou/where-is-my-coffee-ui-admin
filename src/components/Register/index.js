@@ -4,21 +4,25 @@ import { Field, Formik } from "formik";
 import * as Yup from "yup";
 import { Button } from "react-bootstrap";
 import APIService from "../../APIService";
+import AppLoader from "../Loader";
 
-import "./Register.css";
+import "./styles.css";
 
 class Register extends React.Component {
   constructor(props) {
     super(props);
     this.form = {};
     this.state = {
-      users: []
+      users: [],
+      isLoading: false
     };
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
+    this.setState({ isLoading: true });
     e.preventDefault();
-    APIService.registerPurchase(this.form.values);
+    await APIService.registerPurchase(this.form.values);
+    this.setState({ isLoading: false });
   };
 
   componentDidMount() {
@@ -29,7 +33,9 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
+        <h1>Registrar Compra</h1>
+        <AppLoader isActive={this.state.isLoading} />
         <Formik
           enableReinitialize
           initialValues={{
@@ -47,7 +53,10 @@ class Register extends React.Component {
             const { dirty, isSubmitting, handleReset } = form;
             this.form = form;
             return (
-              <form onSubmit={this.handleSubmit}>
+              <form
+                onSubmit={this.handleSubmit}
+                style={{ paddingBottom: "40px" }}
+              >
                 <label htmlFor="productorId">Productor</label>
                 <Field
                   className="form-control"
@@ -66,16 +75,16 @@ class Register extends React.Component {
                 <label htmlFor="fanegas">Cantidad de Fanegas</label>
                 <Field id="fanegas" name="fanegas" placeholder="" />
                 <Button onClick={handleReset} disabled={!dirty || isSubmitting}>
-                  Limpiar
+                  Cancelar
                 </Button>
                 <Button bsStyle="primary" type="submit" disabled={isSubmitting}>
-                  Registrar Compra
+                  Registrar
                 </Button>
               </form>
             );
           }}
         </Formik>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -1,3 +1,12 @@
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: #555;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -25,4 +34,31 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button.btn {
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+}
+
+button.btn.btn-primary {
+  background-color: #2b1b13;
+  border: none;
+}
+
+.react-overlay-loader-spinner:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  margin-left: -20px;
+  border-radius: 50%;
+  border: 3px solid #eee;
+  border-top-color: #07d;
+  animation: react-overlay-loader-spinner 0.8s linear infinite;
 }
