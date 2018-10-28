@@ -14,7 +14,6 @@ const APIService = {
       id,
       fanegas
     };
-    console.log(body);
 
     await fetch(`${API}/cafe`, {
       method: "POST",
