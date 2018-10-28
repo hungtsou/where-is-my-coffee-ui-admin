@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Test from "./components/Test";
 import Register from "./components/Register";
+import MainNav from "./components/MainNav";
 
 class App extends Component {
   render() {
@@ -10,14 +11,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <ul>
-              <li>
-                <Link to="/">Register</Link>
-              </li>
-              <li>
-                <Link to="/test">test</Link>
-              </li>
-            </ul>
+            <MainNav />
 
             <hr />
             <Route path="/" component={Register} />
