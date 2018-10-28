@@ -1,6 +1,20 @@
 import React, { Component } from "react";
 import CategorizeForm from "./CategorizeForm";
 import { Button } from "react-bootstrap";
+import QRCode from 'qrcode.react';
+
+const stylesQR = {
+  margin: "0 auto 4rem",
+  display: "block"
+}
+
+const stylesOrderDetail = {
+  textAlign: "center",
+  margin: 0,
+  padding: 0,
+  listStyle: "none",
+  fontSize: "3rem"
+}
 
 class Order extends Component {
   constructor(props) {
@@ -29,15 +43,16 @@ class Order extends Component {
         {order &&
           !displayForm && (
             <div>
-              <ul>
-                <li>Id: {order.id}</li>
-                <li>Category: {order.category}</li>
+              <QRCode value="{order.id}" style={stylesQR} />
+              <ul style={stylesOrderDetail}>
+                <li>Número de Recibo: {order.id}</li>
+                <li>Silo: {order.category || 'Sin Asignar'}</li>
               </ul>
               <Button
                 bsStyle="primary"
                 onClick={() => this.setState({ displayForm: true })}
               >
-                Editar
+                Mover
               </Button>
             </div>
           )}
