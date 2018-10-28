@@ -22,7 +22,7 @@ class App extends Component {
             </ul>
 
             <hr />
-            <Route path="/" component={Register} />
+            <Route path="/" exact component={Register} />
             <Route path="/orders" component={Orders} />
             <Route path="/order/:id" component={Order} />
           </Grid>
