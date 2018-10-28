@@ -12,13 +12,14 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <MainNav />
-          <Grid>
-            <hr />
-            <Route path="/" component={Register} />
-            <Route path="/orders" component={Orders} />
-            <Route path="/order/:id" component={Order} />
-          </Grid>
+          <React.Fragment>
+            <MainNav />
+            <Grid>
+              <Route path="/" exact component={Register} />
+              <Route path="/orders" component={Orders} />
+              <Route path="/order/:id" component={Order} />
+            </Grid>
+          </React.Fragment>
         </Router>
       </div>
     );

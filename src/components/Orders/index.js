@@ -18,7 +18,7 @@ const ordersData = [
 ];
 
 const ordersList = ordersData.map(order => (
-  <ListGroupItem>
+  <ListGroupItem key={order.id}>
     <Link to={`order/${order.id}`}>{order.name}</Link>
   </ListGroupItem>
 ));
