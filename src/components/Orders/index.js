@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 
+const categoryStyle = {
+  float: 'right'
+};
+
 class Orders extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +28,7 @@ class Orders extends Component {
       ordersData.map(order => (
         <ListGroupItem key={order.id}>
           <Link to={`order/${order.id}`}>{order.id}</Link>
+          <span style={categoryStyle}>{order.category || 'Sin Categoría'}</span>
         </ListGroupItem>
       ));
 

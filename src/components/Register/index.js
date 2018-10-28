@@ -61,7 +61,7 @@ class Register extends React.Component {
                     </option>
                   ))}
                 </Field>
-                <label htmlFor="id">Identificacion del Productor</label>
+                <label htmlFor="id">Número de Recibo</label>
                 <Field id="id" name="id" placeholder="" />
                 <label htmlFor="fanegas">Cantidad de Fanegas</label>
                 <Field id="fanegas" name="fanegas" placeholder="" />
