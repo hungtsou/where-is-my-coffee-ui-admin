@@ -52,7 +52,10 @@ class Register extends React.Component {
             const { dirty, isSubmitting, handleReset } = form;
             this.form = form;
             return (
-              <form onSubmit={this.handleSubmit}>
+              <form
+                onSubmit={this.handleSubmit}
+                style={{ paddingBottom: "40px" }}
+              >
                 <label htmlFor="productorId">Usuario</label>
                 <Field
                   className="form-control"
