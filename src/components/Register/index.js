@@ -48,7 +48,7 @@ class Register extends React.Component {
             this.form = form;
             return (
               <form onSubmit={this.handleSubmit}>
-                <label htmlFor="productorId">Usuario</label>
+                <label htmlFor="productorId">Productor</label>
                 <Field
                   className="form-control"
                   component="select"
@@ -66,10 +66,10 @@ class Register extends React.Component {
                 <label htmlFor="fanegas">Cantidad de Fanegas</label>
                 <Field id="fanegas" name="fanegas" placeholder="" />
                 <Button onClick={handleReset} disabled={!dirty || isSubmitting}>
-                  Reset
+                  Limpiar
                 </Button>
                 <Button bsStyle="primary" type="submit" disabled={isSubmitting}>
-                  Submit
+                  Registrar Compra
                 </Button>
               </form>
             );
