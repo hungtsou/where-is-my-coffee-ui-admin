@@ -68,11 +68,12 @@ class Register extends React.Component {
                   name="productorId"
                   id="productorId"
                 >
-                  {this.state.users.map(item => (
-                    <option key={item.id} value={item.id}>
-                      {item.user}
-                    </option>
-                  ))}
+                  {this.state.users.length &&
+                    this.state.users.map(item => (
+                      <option key={item.id} value={item.id}>
+                        {item.user}
+                      </option>
+                    ))}
                 </Field>
                 <label htmlFor="id">Número de Recibo</label>
                 <Field id="id" name="id" placeholder="" />
